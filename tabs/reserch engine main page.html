@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+  
+
+
+  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+  
+  <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+  <!-- Custom styles for our template -->
+  <link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
+  <link rel="stylesheet" href="assets/css/main.css">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <style class="text/css">
+      html,body {height: 100%;}
+      #wrap {min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -45px; padding: 0 0 50px;}
+      #footer {padding-top: 10px; height: 45px; border-top: 1px solid #C0C0C0;}
+      a.skiptocontent:link, a.skiptocontent:hover, a.skiptocontent:visited {display: inline-block;position: absolute;left: -400px;font-size: 0.8em;text-decoration: none; opacity:0}
+      a.skiptocontent:active, a.skiptocontent:focus {display: inline-block;position: absolute;left: 9px;background-color:white; opacity:1}
+    </style>
+    
+    
+<title>Research Engine | Poorabsen</title>
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript">
+  MathJax.Hub.Config({
+  "tex2jax": { inlineMath: [ [ '$', '$' ] ], processEscapes: true },
+  TeX: {equationNumbers: {autoNumber: "AMS"} }
+  });
+</script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+var mergeNodes = function (a,b) { return [].slice.call(a).concat([].slice.call(b)); }
+google.load("visualization", "1", {packages:["corechart"]});
+<!-- Last Week Summary Chart  -->
+var showAllActvs = function () {
+  p_actvs = document.getElementsByClassName('p_actv_item');
+  for (var i=0; i < p_actvs.length; i++) {p_actvs[i].style.display = ''}
+}
+google.setOnLoadCallback(drawLastWeekSummaryChart);
+function drawLastWeekSummaryChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Kind', 'Counts'],
+        
+    ]);
+    var options = {legend: 'none'};
+    var lastWeekSummaryChart = new google.visualization.ColumnChart(document.getElementById('p_stats'));
+    
+    function lastWeekSummarySelectHandler() {
+        var selectedItem = lastWeekSummaryChart.getSelection()[0];
+        if (selectedItem) 
+	{
+            var u_kind = data.getValue(selectedItem.row, 0);
+            var p_actvs = document.getElementsByClassName('p_actv_item');
+            for (var i=0; i < p_actvs.length; i++) {p_actvs[i].style.display = 'none';}
+	    var visible_actvs = [];
+	    if (u_kind == 'Notebooks') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('Notebooks'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('NotebookNotes'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('NoteComments'));}
+	    else if (u_kind == 'Code') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('CodeRepositories'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('CodeComments'));}
+	    else if (u_kind == 'Datasets') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('DataSets'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('DataConcepts'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('DataRevisions'));}
+	    else if (u_kind == 'Wiki') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('WikiRevisions'));}
+	    else if (u_kind == 'Writings') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('CollaborativeWritings'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('WritingRevisions'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('WritingComments'));}
+	    else if (u_kind == 'Forum') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('ForumThreads'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('ForumComments'));}
+	    else if (u_kind == 'Bibliography') {
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('BiblioItems'));
+		visible_actvs = mergeNodes(visible_actvs, document.getElementsByClassName('BiblioComments'));}
+	    else {console.log('Error, unrecognized kind' + u_kind);}
+	    for (var i=0; i < visible_actvs.length; i++) { visible_actvs[i].style.display = '';}
+        }
+        else {
+            showAllActvs();
+        }
+    }
+    
+    google.visualization.events.addListener(lastWeekSummaryChart, 'select', lastWeekSummarySelectHandler);
+    lastWeekSummaryChart.draw(data, options);
+}
+<!-- Project contributions Chart  -->
+google.setOnLoadCallback(drawPieChart);
+function drawPieChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Project', 'Counts'],
+        
+    ]);
+    var options = {title: 'Contributions in the last 30 days'};
+    var pieChart = new google.visualization.PieChart(document.getElementById('p_pie_chart'));
+    pieChart.draw(data, options);
+}
+</script>
+
+  </head>
+
+  <body>
+    
+
+    <a href="#main-content" class="skiptocontent">Skip to main content</a>
+    <div id="wrap">
+      
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+	<div class="container-fluid">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="/" aria-label="Return to the root page">Research Engine</a>
+	  </div>
+	
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+	    
+	    <ul class="nav navbar-nav">
+	      <li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+		  
+		  
+		  <li><a href="/5859381216280576">ProjectHandler</a></li>
+		  
+		  
+		</ul>
+	      </li>
+	      <li><a href="/poorabsen/outreach">Outreach</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="/poorabsen"><img src="https://secure.gravatar.com/avatar/a3470a3c0ffcd053f4bc3f3d55f8269d?s=20" aria-hidden="true"/> poorabsen</a></li>
+	      <li><a href="/settings" title="Settings"><span class="glyphicon glyphicon-wrench"></span></a></li>
+	      <li><a href="/logout" title="Logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
+	    </ul>
+	    
+	  </div>
+	</div>
+      </nav>
+      
+      <!-- CONTENT -->    
+      
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h2>Poorabsen</h2>
+      <hr>
+      <div class="text-center">
+	<img class="img-responsive img-thumbnail" src="https://secure.gravatar.com/avatar/a3470a3c0ffcd053f4bc3f3d55f8269d?s=150" style="display:block;margin:0 auto;" aria-label="Profile image">
+      </div>
+      
+      <br/>
+      <p class="text-center"><a href="/poorabsen/outreach">Public outreach page</a></p>
+    </div>
+
+    <div class="col-md-5">
+      <h2 id="main-content">Last week's summary</h2>
+      <hr>
+      
+      <p>There has been no activity for 7 days or more</p>
+      
+    </div>
+
+    <div class="col-md-4">
+      <h2>Your projects</h2>
+      <hr>
+      
+      <div id="p_pie_chart"></div><br/>
+      <div class="panel-body">
+	<div class="panel-group" id="accordion1">
+	  
+	  <div class="panel panel-default">
+            <div class="panel-heading">
+	      <h4 class="panel-title">
+		<a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion1" href="#5859381216280576">
+		  <span class="glyphicon glyphicon-info-sign"></span></a>
+		<a href="/5859381216280576">ProjectHandler</a>
+	      </h4>
+            </div>
+            <div class="panel-collapse collapse" id="5859381216280576">
+		<div class="panel-body">
+		  <p>ProjectHandler is an online platform for student and mentor to arrange their projects in a better way.</p>
+		  <p class="text-muted">Last updated: 01 Apr 2014</p>
+		</div>
+            </div>
+	  </div>
+	  
+	</div>
+      </div>
+      
+      
+      <div class=""><a class="btn btn-success pull-right" href="/new_project"><span class="glyphicon glyphicon-plus"></span> New project</a></div>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+      
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <div class="container">
+	<a href="https://developers.google.com/appengine/" class="pull-right">
+	  <img src="https://developers.google.com/appengine/images/appengine-noborder-120x30.gif"
+	       alt="Powered by Google App Engine" />
+	</a>
+	<p>Research Engine (alpha). 
+	  <a href="https://plus.google.com/+ResearchEngineAppspotApp" rel="publisher" aria-label="Follow us on Google+">Google+</a>
+	  <a href="/terms" title="Terms of service">Terms</a>
+	  <small class="text-muted credit" tabindex="0">You can find the source code for this project at its <a title="Contributions, testings and bug reports are welcome!" href="https://github.com/andresgsaravia/research-engine">public repository</a> under a <a title="Please make sure you understand this license before using this project's source code." href="http://www.gnu.org/licenses/gpl-3.0.html">GNU GPLv3 license.</a></small>
+	</p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+    
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js?onload=onLoadCallback';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+    
+    
+  </body>
+</html>
