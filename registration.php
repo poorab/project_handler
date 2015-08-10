@@ -2,6 +2,7 @@
 <?php
     //include 'includes/login/core.inc.php';
     include 'includes/login/connect.inc.php';
+    include 'includes/login/core.inc.php';
 ?>
 <!-- /End of includes -->
 
@@ -11,7 +12,7 @@
 	<?php
 	    //if(loggedIn()){ #This function is in /includes/login/core.inc.pho for verfying user session
 	      
-	    	if (isset($_POST['studentRegistration'])) {
+	    /*	if (isset($_POST['studentRegistration'])) {
 	    		# code...
 	    		if ((!empty($_POST['studentName'])) && (!empty($_POST['courseId'])) && (!empty($_POST['rollNo'])) && (!empty($_POST['batchId'])) && (!empty($_POST['studentEmail']))) {
 	    			# code...
@@ -22,11 +23,10 @@
 	    			$batchId = $_POST['batchId'];
 	    			$studentEmail = $_POST['studentEmail'];
 	    			$studentPassword = $_POST['studentPassword'];
-	    			$studentRegistrationQuery = mysqli_query($con, "INSERT INTO `student_details`(`student_id`, `student_name`, `roll_no`, `course_id`, `semester`, `batch_id`, `email`, `password`) VALUES ( '', '$studentName', '$rollNo', '$courseId', '$semester', '$batchId', '$email', '$password')");
-	    			echo "<script>window.alert('Student registration successful.');</script>";
+	    			$studentRegistrationQuery = mysqli_query($con, "INSERT INTO `student_details`(`student_id`, `student_name`, `roll_no`, `course_id`, `semester`, `batch_id`, `email`, `password`) VALUES ( '', '$studentName', '$rollNo', '$courseId', '$semester', '$batchId', '$studentEmail', '$studentPassword')");
 	    		}
 	    		else{
-	    			echo "<script>window.alert('Fill all the necessary fields.');</script>";
+	    			echo "Registration unsuccessful. <a href='registration.php'>Click here</a> to login again.";
 	    		}
 	    	}
 	    	elseif (isset($_POST['mentorRegistration'])) {
@@ -42,7 +42,7 @@
 	    		else{
 	    			echo "<script>window.alert('Fill all the necessary fields.');</script>";
 	    		}
-	    	}
+	    	}*/
 	?>
 
 	<head>
@@ -133,7 +133,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="student">
 								<!-- form for student registration goes here-->
-								<form action="#" method="POST" role="form">
+								<form action="studentRegistration.php" method="POST" role="form">
 									<div class="top-margin">
 										<label>Full Name <span class="text-danger">*</span></label>
 										<input type="text" placeholder="name" name="studentName" class="form-control">
@@ -225,7 +225,7 @@
 							</div>
 							<div role="tabpanel" class="tab-pane" id="mentor">
 								<!-- form for mentor registration goes here-->
-								<form action="#" method="POST" role="form">
+								<form action="mentorRegistration.php" method="POST" role="form">
 									<div class="top-margin">
 										<label>Full Name <span class="text-danger">*</span></label>
 										<input type="text" placeholder="name" name="mentorName" class="form-control">

@@ -1,4 +1,12 @@
-<HTML><HEAD><TITLE>.:::: Powered By Ludarubma ::::.</TITLE></HEAD><!DOCTYPE html>
+<!-- Including files for DB connection and Session Control -->
+<?php
+    //include 'includes/login/core.inc.php';
+    include 'includes/login/connect.inc.php';
+    include 'includes/login/core.inc.php';
+?>
+<!-- /End of includes -->
+
+
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -51,7 +59,7 @@
 		<div class="container">
 			<div class="row">
 				<h1 class="lead">Wel-come To ProjectHandler</h1>
-				<p><a class="btn btn-default btn-lg" role="button" href="signin.html">SignIn</a> <a class="btn btn-action btn-lg" role="button" href="registration.html">Register Now</a></p>
+				<p><a class="btn btn-default btn-lg" role="button" href="login.php">SignIn</a> <a class="btn btn-action btn-lg" role="button" href="registration.php">Register Now</a></p>
 			</div>
 		</div>
 	</header>
@@ -245,5 +253,6 @@
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
+
 </body>
 </html>
