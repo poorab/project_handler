@@ -25,7 +25,9 @@
 	    			$studentPassword = $_POST['studentPassword'];
 	    			$studentRegistrationQuery = mysqli_query($con, "INSERT INTO `student_details`(`student_id`, `student_name`, `roll_no`, `course_id`, `semester`, `batch_id`, `email`, `password`) VALUES ( '', '$studentName', '$rollNo', '$courseId', '$semester', '$batchId', '$studentEmail', '$studentPassword')");
 	    		
-	    			echo $studentName." registered";
+	    			$userRegisterQuery = mysqli_query($con, "INSERT INTO `user_info`(`user_id`, `user_name`, `password`) VALUES('', '$studentEmail', '$studentPassword')");
+	    			echo $studentName." have successfully registered.";
+	    			echo "Please, <a href='login.php'>login</a> to continue...";
 	    		}
 	    		else{
 	    			echo "Registration unsuccessful. <a href='registration.php'>Click here</a> to login again.";

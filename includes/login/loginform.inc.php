@@ -1,4 +1,12 @@
 <?php
+
+	if ($currentFile == "/project_handler/studentProfile.php") {
+		$currentFile = "/project_handler/login.php";
+	}
+	elseif ($currentFile == "/project_handler/mentorProfile.php") {
+		$currentFile = "/project_handler/login.php";
+	}
+
 	if(isset($_POST['loginButton'])) {
 		# code...
 		if(isset($_POST['username']) and isset($_POST['password'])){
@@ -36,23 +44,28 @@
 		}
 	}
 ?>
+
+
 	<br>
-	<h2 style="text-align:center">Please Login</h2>
 	<!-- User login form starts here-->
 	<form class="container" action="<?php echo $currentFile; ?>" method="post" id="loginForm">
         
         <div class="row">
 
-            <div class="col-md-4"><br>
-                <form action="<?php echo $currentFile; ?>" name="loginForm" method="post" class="form">
-                    <label>Username </label>
-                    <input type="text" name="username" /><br><br>
-                    <label>Password </label>
-                    <input type="password" name="password" /><br> <br> 
-                    <button type="submit" id="loginButton" name="loginButton">Login</button>
-                </form>
+            <div class="container"><br>
+                <form class="form-signin" role="form" action="<?php echo $currentFile; ?>" name="loginForm" method="post">
+        			<h2 class="form-signin-heading">Please sign in</h2>
+        			<label>Username </label><input type="email" class="form-control" placeholder="Email address" required autofocus name="username">
+        			<label>Password </label><input type="password" class="form-control" placeholder="Password" required name="password">
+        			<label class="checkbox">
+          				<input type="checkbox" value="remember-me"> Remember me
+        			</label>
+        			<button class="btn btn-lg btn-primary btn-block" type="submit" id="loginButton" name="loginButton">Sign in</button>
+      			</form>
             </div>
-        
+        	<!-- .container -->	
+
+
         </div>
         <!-- .row -->
 	</form> <!-- User login form ends here-->

@@ -20,7 +20,10 @@
 	    			$email = $_POST['mentorEmail'];
 	    			$password = $_POST['mentorPassword'];
 	    			$studentRegistrationQuery = mysqli_query($con, "INSERT INTO `mentor_details`(`mentor_id`, `mentor_name`, `batch_id`, `email`, `password`) VALUES ( '', '$mentorName', '', '$email', '$password')");
-	    			echo $mentorName." registered";
+	    			
+	    			$userRegisterQuery = mysqli_query($con, "INSERT INTO `user_info`(`user_id`, `user_name`, `password`) VALUES('', '$email', '$password')");
+	    			echo $mentorName." have successfully registered.";
+	    			echo "Please, <a href='login.php'>login</a> to continue...";
 	    		}
 	    		else{
 	    			echo "Registration unsuccessful. <a href='registration.php'>Click here</a> to login again.";
